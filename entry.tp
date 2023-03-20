@@ -1,0 +1,114 @@
+{
+    "sdk": 7,
+    "version": 10000,
+    "name": "Teams Integration",
+    "id": "info.sowa.teams",
+    "configuration": {
+        "colorDark": "#444790",
+        "colorLight": "#5a5fc7",
+        "parentCategory": "social"
+    },
+    "plugin_start_cmd": "dotnet ./TouchPortalTeamsIntegrationPlugin.dll",
+    "plugin_start_cmd_windows": "%TP_PLUGIN_FOLDER%TouchPortalTeamsIntegrationPlugin\\win\\TouchPortalTeamsIntegrationPlugin.exe",
+    "plugin_start_cmd_mac": "sh %TP_PLUGIN_FOLDER%TouchPortalTeamsIntegrationPlugin/osx/plugin_start.sh",
+    "plugin_start_cmd_linux": "sh %TP_PLUGIN_FOLDER%TouchPortalTeamsIntegrationPlugin/linux/plugin_start.sh",
+    "settings": [
+        {
+          "name":"API token",
+          "default":"",
+          "type":"text"
+        },
+        {
+          "name":"Teams address",
+          "default":"localhost",
+          "type":"text"
+        }
+    ],
+    "categories": [
+        {
+            "id": "info.sowa.teams.category",
+            "name": "Teams",
+            "imagepath": "%TP_PLUGIN_FOLDER%TouchPortalTeamsIntegrationPlugin/icon24.png",
+            "actions": [
+                { "id": "info.sowa.teams.action.toggle.microphone", "name": "Teams microphone", "prefix": "Teams", "type": "communicate", "tryInline": true,
+                  "format": "Set Teams microphone to {$info.sowa.teams.action.toggle.microphone.set$}",
+                  data : [{
+                        "id": "info.sowa.teams.action.toggle.microphone.set",
+                        "type": "choice",
+                        "label": "Microphone",
+                        "default": "Toggle",
+                        "valueChoices": [ "Toggle", "On", "Off" ]
+                    }]
+                },
+                { "id": "info.sowa.teams.action.toggle.camera", "name": "Teams camera", "prefix": "Teams", "type": "communicate", "tryInline": true,
+                  "format": "Set Teams camera to {$info.sowa.teams.action.toggle.camera.set$}",
+                  data : [{
+                        "id": "info.sowa.teams.action.toggle.camera.set",
+                        "type": "choice",
+                        "label": "Camera",
+                        "default": "Toggle",
+                        "valueChoices": [ "Toggle", "On", "Off" ]
+                  }]
+                },
+                { "id": "info.sowa.teams.action.toggle.backgroundblur", "name": "Teams background blur", "prefix": "Teams", "type": "communicate", "tryInline": true,
+                  "format": "Set Teams background blur to {$info.sowa.teams.action.toggle.backgroundblur.set$}",
+                  data : [{
+                        "id": "info.sowa.teams.action.toggle.backgroundblur.set",
+                        "type": "choice",
+                        "label": "Background blur",
+                        "default": "Toggle",
+                        "valueChoices": [ "Toggle", "On", "Off" ]
+                    }]
+                },
+                { "id": "info.sowa.teams.action.toggle.hand", "name": "Teams hand", "prefix": "Teams", "type": "communicate", "tryInline": true,
+                  "format": "Set Teams hand to {$info.sowa.teams.action.toggle.hand.set$}",
+                  data : [{
+                        "id": "info.sowa.teams.action.toggle.hand.set",
+                        "type": "choice",
+                        "label": "Hand",
+                        "default": "Toggle",
+                        "valueChoices": [ "Toggle", "Up", "Down" ]
+                    }]
+                },
+                { "id": "info.sowa.teams.action.call.leave", "name": "Leave call", "prefix": "Teams", "type": "communicate" },
+                { "id": "info.sowa.teams.action.react.applause", "name": "Applause", "prefix": "Teams", "type": "communicate" },
+                { "id": "info.sowa.teams.action.react.laugh", "name": "Laugh", "prefix": "Teams", "type": "communicate" },
+                { "id": "info.sowa.teams.action.react.like", "name": "Like", "prefix": "Teams", "type": "communicate" },
+                { "id": "info.sowa.teams.action.react.love", "name": "Love", "prefix": "Teams", "type": "communicate" },
+            ],
+            "states": [
+                { "id": "info.sowa.teams.state.isconnected", "type": "choice", "desc": "Connected", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.ismicrophoneon", "type": "choice", "desc": "Microphone on", "default": "Off", "valueChoices": ["On", "Off"] },
+                { "id": "info.sowa.teams.state.iscameraon", "type": "choice", "desc": "Camera on", "default": "Off", "valueChoices": ["On", "Off"] },
+                { "id": "info.sowa.teams.state.ishandraised", "type": "choice", "desc": "Hand raised", "default": "Down", "valueChoices": ["Up", "Down"] },
+                { "id": "info.sowa.teams.state.isinmeeting", "type": "choice", "desc": "Meeting active", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.isrecordingon", "type": "choice", "desc": "Recording", "default": "Off", "valueChoices": ["On", "Off"] },
+                { "id": "info.sowa.teams.state.isbackgroundblurred", "type": "choice", "desc": "Background blurred", "default": "Off", "valueChoices": ["On", "Off"] },
+                { "id": "info.sowa.teams.state.cantogglemute", "type": "choice", "desc": "Can toggle mute", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.cantogglevideo", "type": "choice", "desc": "Can toggle camera", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.cantogglehand", "type": "choice", "desc": "Can toggle hand", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.cantoggleblur", "type": "choice", "desc": "Can toggle blur", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.cantogglerecord", "type": "choice", "desc": "Can toggle record", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.canleave", "type": "choice", "desc": "Can leave", "default": "No", "valueChoices": ["Yes", "No"] },
+                { "id": "info.sowa.teams.state.canreact", "type": "choice", "desc": "Can react", "default": "No", "valueChoices": ["Yes", "No"] },
+            ],
+            "events": [
+                { "id": "info.sowa.teams.event.isconnected", "name": "On Teams connected state", "format": "When Teams connected state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.isconnected" },
+                { "id": "info.sowa.teams.event.ismicrophoneon", "name": "On Teams microphone state", "format": "When Teams microphone state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["On", "Off"], "valueStateId": "info.sowa.teams.state.ismicrophoneon" },
+                { "id": "info.sowa.teams.event.iscameraon", "name": "On Teams camera state", "format": "When Teams camera state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["On", "Off"], "valueStateId": "info.sowa.teams.state.iscameraon" },
+                { "id": "info.sowa.teams.event.ishandraised", "name": "On Teams hand raised state", "format": "When Teams hand raised state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Up", "Down"], "valueStateId": "info.sowa.teams.state.ishandraised" },
+                { "id": "info.sowa.teams.event.isinmeeting", "name": "On Teams meeting active state", "format": "When Teams meeting active state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.isinmeeting" },
+                { "id": "info.sowa.teams.event.isrecordingon", "name": "On Teams recording state", "format": "When Teams recording state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["On", "Off"], "valueStateId": "info.sowa.teams.state.isrecordingon" },
+                { "id": "info.sowa.teams.event.isbackgroundblurred", "name": "On Teams background blurred state", "format": "When Teams background blurred state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["On", "Off"], "valueStateId": "info.sowa.teams.state.isbackgroundblurred" },
+                { "id": "info.sowa.teams.event.cantogglemute", "name": "On Teams can change microphone state", "format": "When Teams can change microphone state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.cantogglemute" },
+                { "id": "info.sowa.teams.event.cantogglevideo", "name": "On Teams can change camera state", "format": "When Teams can change camera state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.cantogglevideo" },
+                { "id": "info.sowa.teams.event.cantogglehand", "name": "On Teams can change hand state", "format": "When Teams can change hand state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.cantogglehand" },
+                { "id": "info.sowa.teams.event.cantoggleblur", "name": "On Teams can change blur state", "format": "When Teams can change blur state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.cantoggleblur" },
+                { "id": "info.sowa.teams.event.cantogglerecord", "name": "On Teams can change record state", "format": "When Teams can change record state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.cantogglerecord" },
+                { "id": "info.sowa.teams.event.canleave", "name": "On Teams can change leave state", "format": "When Teams can change leave state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.canleave" },
+                { "id": "info.sowa.teams.event.canreact", "name": "On Teams can change react state", "format": "When Teams can change react state changes to $val", "type": "communicate", "valueType": "choice", "valueChoices": ["Yes", "No"], "valueStateId": "info.sowa.teams.state.canreact" },
+            ],
+            "connectors": []
+        }
+    ]
+}

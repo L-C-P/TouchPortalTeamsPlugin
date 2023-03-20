@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RootNamespace>TeamsIntegration</RootNamespace>
+    <Title>TouchPortal MS Teams Integration Plugin</Title>
+    <Authors>Denis Sowa</Authors>
+    <Copyright>2023 by Denis Sowa</Copyright>
+    <Company>Denis Sowa</Company>
+    <Product>TouchPortal MS Teams Integration</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyName>TouchPortalTeamsIntegrationPlugin</AssemblyName>
+    <Version>1.0.0.0</Version>
+    <Description>TouchPortal Teams integration plugin</Description>
+    <PackageProjectUrl>https://github.com/L-C-P</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageReference Include="TouchPortalSDK" Version="0.31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="icon24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="entry.tp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="plugin_start.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Remove="Thumbs.db" />
+    <None Update="entry_copy.tp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Remove="Assets\Thumbs.db" />
+  </ItemGroup>
+
+</Project>
