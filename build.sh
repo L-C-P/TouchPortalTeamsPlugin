@@ -22,3 +22,4 @@ zip -q -r "../Touch_Portal_Teams_Integration_Plugin.tpp" "TouchPortalTeamsIntegr
 rm -R "TouchPortalTeamsIntegrationPlugin"
 
 cd ".."
+open .

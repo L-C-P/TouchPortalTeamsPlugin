@@ -1,6 +1,6 @@
 {
     "sdk": 7,
-    "version": 10000,
+    "version": 10001,
     "name": "Teams Integration",
     "id": "info.sowa.teams",
     "configuration": {

@@ -21,6 +21,7 @@ serviceCollection.AddLogging(configure =>
 {
     configure.AddSimpleConsole(options => options.TimestampFormat = "[yyyy.MM.dd HH:mm:ss] ");
     configure.AddConfiguration(configurationRoot.GetSection("Logging"));
+    configure.AddFile(configurationRoot.GetSection("Logging"));
 });
 
 // Registering the Plugin to the IoC container:
