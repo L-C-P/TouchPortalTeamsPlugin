@@ -10,19 +10,14 @@ using TouchPortalSDK.Messages.Models;
 namespace TeamsIntegration;
 
 /// <summary>
-/// This is the TouchPortal plugin
+///     This is the TouchPortal plugin
 /// </summary>
 public class TeamsTpPlugin : PluginBase
 {
     private const String CPluginId = "info.sowa.teams";
-    private readonly TeamsConfiguration _Configuration;
     private readonly CancellationTokenSource _CancellationTokenSource;
-
-    protected override ILogger Logger { get; }
-    protected override ITouchPortalClient Client { get; }
+    private readonly TeamsConfiguration _Configuration;
     private readonly TeamsWsIntegration _TeamsWsIntegration;
-
-    public Boolean IsConnected => Client.IsConnected;
 
     public TeamsTpPlugin(ITouchPortalClientFactory clientFactory, TeamsWsIntegration teamsWsIntegration, ILogger<TeamsTpPlugin> logger)
     {
@@ -32,14 +27,20 @@ public class TeamsTpPlugin : PluginBase
 
         _CancellationTokenSource = new CancellationTokenSource();
 
-        _Configuration = new TeamsConfiguration()
+        _Configuration = new TeamsConfiguration(logger)
         {
-            Protocol = "1.0.0",
             Manufacturer = (GetType().Assembly.GetCustomAttribute(typeof(AssemblyCompanyAttribute)) as AssemblyCompanyAttribute)?.Company,
-            App = (GetType().Assembly.GetCustomAttribute(typeof(AssemblyTitleAttribute)) as AssemblyTitleAttribute)?.Title,
+            App = (GetType().Assembly.GetCustomAttribute(typeof(AssemblyProductAttribute)) as AssemblyProductAttribute)?.Product,
             AppVersion = GetType().Assembly.GetName().Version?.ToString()
         };
+
+        _Configuration.Load();
     }
+
+    protected override ILogger Logger { get; }
+    protected override ITouchPortalClient Client { get; }
+
+    public Boolean IsConnected => Client.IsConnected;
 
     protected override String GetPluginId()
     {
@@ -111,9 +112,6 @@ public class TeamsTpPlugin : PluginBase
                         case CPluginId + ".action.toggle.camera":
                             _TeamsWsIntegration.Command(TeamsAction.Toggle_Video, GetTpActionState(message));
                             break;
-                        case CPluginId + ".action.toggle.recording":
-                            _TeamsWsIntegration.Command(TeamsAction.Toggle_Recording, GetTpActionState(message));
-                            break;
                         case CPluginId + ".action.toggle.backgroundblur":
                             _TeamsWsIntegration.Command(TeamsAction.Toggle_Background_Blur, GetTpActionState(message));
                             break;
@@ -164,19 +162,18 @@ public class TeamsTpPlugin : PluginBase
         {
             switch (setting.Name)
             {
-                case "API token":
-                    _Configuration.ApiToken = setting.Value.Trim();
-                    break;
                 case "Teams address":
-                    _Configuration.TeamsIpDns = setting.Value.Trim();
+                    String configurationTeamsIpDns = setting.Value.Trim();
+
+                    if (!String.IsNullOrEmpty(configurationTeamsIpDns))
+                    {
+                        _Configuration.TeamsIpDns = configurationTeamsIpDns;
+                        _Configuration.ConfigurationChanged = true;
+                    }
+
                     break;
-                // case "Restore mic/video (Yes/No)":
-                //     _Configuration.RestoreCamVideo = setting.Value.ToLowerInvariant().Trim() == "yes";
-                //     break;
             }
         }
-
-        _Configuration.ConfigurationChanged = true;
     }
 
     private TpActionState GetTpActionState(ActionEvent message)

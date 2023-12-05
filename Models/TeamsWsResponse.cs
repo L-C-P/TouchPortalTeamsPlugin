@@ -1,10 +1,18 @@
+#nullable enable
 namespace TeamsIntegration.Models;
 
 /// <summary>
-/// Model to handle response from Teams
+///     Model to handle response from Teams
 /// </summary>
 public class TeamsWsResponse
 {
-    public String ApiVersion { get; set; }
-    public MeetingUpdate MeetingUpdate { get; set; } = new MeetingUpdate();
+    public MeetingUpdate? MeetingUpdate { get; set; }
+
+    public Int32? RequestId { get; set; }
+
+    public String? Response { get; set; }
+
+    public String? ErrorMsg { get; set; }
+
+    public String? TokenRefresh { get; set; }
 }

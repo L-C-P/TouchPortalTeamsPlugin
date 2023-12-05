@@ -3,7 +3,7 @@ using TeamsIntegration.Attributes;
 namespace TeamsIntegration.Models;
 
 /// <summary>
-/// Meeting state for the current call
+///     Meeting state for the current call
 /// </summary>
 public class MeetingState
 {
@@ -11,8 +11,9 @@ public class MeetingState
     [TpStatusBoolean("Off", "On")]
     public Boolean IsMuted { get; set; }
 
+    [TpStatusName("IsCameraOn")]
     [TpStatusBoolean("On", "Off")]
-    public Boolean IsCameraOn { get; set; }
+    public Boolean IsVideoOn { get; set; }
 
     [TpStatusBoolean("Up", "Down")]
     public Boolean IsHandRaised { get; set; }
@@ -25,4 +26,10 @@ public class MeetingState
 
     [TpStatusBoolean("On", "Off")]
     public Boolean IsBackgroundBlurred { get; set; }
+
+    [TpStatusBoolean("On", "Off")]
+    public Boolean IsSharing { get; set; }
+
+    [TpStatusBoolean("Yes", "No")]
+    public Boolean HasUnreadMessages { get; set; }
 }

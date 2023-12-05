@@ -10,9 +10,9 @@
     <Authors>Denis Sowa</Authors>
     <Copyright>2023 by Denis Sowa</Copyright>
     <Company>Denis Sowa</Company>
-    <Product>TouchPortal MS Teams Integration</Product>
-    <AssemblyVersion>1.0.1.1</AssemblyVersion>
-    <FileVersion>1.0.1.1</FileVersion>
+    <Product>TouchPortal for Teams</Product>
+    <AssemblyVersion>1.1.0.2</AssemblyVersion>
+    <FileVersion>1.1.0.2</FileVersion>
     <AssemblyName>TouchPortalTeamsIntegrationPlugin</AssemblyName>
     <Version>1.0.1.1</Version>
     <Description>TouchPortal Teams integration plugin</Description>
@@ -20,10 +20,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-    <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
-    <PackageReference Include="TouchPortalSDK" Version="0.31.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0"/>
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0"/>
+    <PackageReference Include="TouchPortalSDK" Version="0.31.0"/>
   </ItemGroup>
 
   <ItemGroup>
@@ -39,11 +39,8 @@
     <None Update="plugin_start.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Remove="Thumbs.db" />
-    <None Update="entry_copy.tp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Remove="Assets\Thumbs.db" />
+    <None Remove="Thumbs.db"/>
+    <None Remove="Assets\Thumbs.db"/>
   </ItemGroup>
 
 </Project>
