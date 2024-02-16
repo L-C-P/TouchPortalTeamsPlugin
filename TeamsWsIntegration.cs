@@ -45,6 +45,7 @@ public class TeamsWsIntegration
         _WebSocket = new ClientWebSocket();
         _WebSocket.ConnectAsync(uri, cancellationToken).Wait(cancellationToken);
         // _TeamsTpPlugin.SendStateUpdate("lastteamsstatus", "Connected");
+        _TeamsTpPlugin.SendStateUpdate("isconnected", "Yes");
         _TeamsTpPlugin.SendStateUpdate("ispaired", _Configuration.Paired
                                            ? "Yes"
                                            : "No");

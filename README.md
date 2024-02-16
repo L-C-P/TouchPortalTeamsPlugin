@@ -45,7 +45,7 @@ In addition, you will find the following states in Touch Portal:
 ## Installation
 
 - [Enable](https://support.microsoft.com/en-us/office/connect-third-party-devices-to-teams-aabca9f2-47bb-407f-9f9b-81a104a883d6) the third-party app API in Teams.
-- Should work without any configuration.
+- Should work without any configuration. Teams will ask you for permission when you enter the next call.
 - If you run Teams and Touch Portal on different computers, change "localhost" to the corresponding DNS name or IP address of the computer on which Teams is running.
 
 ## Credits
