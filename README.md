@@ -4,6 +4,10 @@
 
 # Touch Portal MS-Teams Plugin
 
+> ⚠️ **Important notice:** Microsoft has removed the Third-Party App API from Microsoft Teams. Because of this, the plugin currently does **not** work.
+>
+> A working workaround already exists, and more details on this will be shared soon. There is hope that the plugin will be usable again in the near future.
+
 #### [Teams](https://www.microsoft.com/en-us/microsoft-teams) integration for [Touch Portal](https://www.touch-portal.com).
 
 This Version is for Teams API 2. If you need the old Teams API 1, please use the [Plugin Version 1.0.1](https://github.com/L-C-P/TouchPortalTeamsPlugin/releases).
