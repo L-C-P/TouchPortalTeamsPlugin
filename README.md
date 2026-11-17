@@ -4,14 +4,23 @@
 
 # Touch Portal MS-Teams Plugin
 
-> ⚠️ **Important notice:** Microsoft has removed the Third-Party App API from Microsoft Teams. Because of this, the plugin currently does **not** work.
+> ✅ **It works again — as Call State.**
 >
-> A working workaround already exists, and more details on this will be shared soon. There is hope that the plugin will be usable again in the near future.
+> Microsoft removed the Third-Party App API from Microsoft Teams, so this plugin stopped working.
+> Its successor is the **Call State Touch Portal plugin**. It does not need the Teams API: the
+> [Call State](https://callstate.app) app reads Teams on your computer, and the plugin gets the live
+> status and sends your commands through your Call State account.
+>
+> - **Download:** [callstate.app/download.html](https://callstate.app/download.html) (macOS and Windows, `.tpp` for Touch Portal)
+> - **Guide:** [callstate.app/docs/touchportal.html](https://callstate.app/docs/touchportal.html)
+> - **Support:** [github.com/callstate/support](https://github.com/callstate/support)
+>
+> This repository is no longer maintained. The text below describes the old plugin and is kept for reference only.
 
-#### [Teams](https://www.microsoft.com/en-us/microsoft-teams) integration for [Touch Portal](https://www.touch-portal.com).
+#### [Teams](https://www.microsoft.com/en-us/microsoft-teams) integration for [Touch Portal](https://www.touch-portal.com) (legacy).
 
-This Version is for Teams API 2. If you need the old Teams API 1, please use the [Plugin Version 1.0.1](https://github.com/L-C-P/TouchPortalTeamsPlugin/releases).
-API 2 is supported in Teams 1 and 2.x. To check your Teams API version, open the "Third-Party App API" in the configuration. If you see "Allow apps or devices", your Teams is using API version 2.
+This version was for Teams API 2. The old Teams API 1 version is [Plugin Version 1.0.1](https://github.com/L-C-P/TouchPortalTeamsPlugin/releases).
+
 
 You can control the following Team functions from Touch Portal:
 
